@@ -1,14 +1,15 @@
 
 #include <RF433.h>
 #include "FS.h"
+#include "SPIFFS.h"
 
-RF433 rf433(D1, -1);
+RF433 rf433(6, -1);   // rx_pin, tx_pin
 
 void setup() {
   Serial.begin(115200);
 
   Serial.print("\nSetup file system:");
-  Serial.println(SPIFFS.begin());
+  Serial.println(SPIFFS.begin(true));
 
   rf433.setup();
 

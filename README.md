@@ -1,9 +1,9 @@
 # ESP-RF-Replay
-Record and replay RF433Mhz signals on an ESP8266, using the Arduino IDE.
+Record and replay RF433Mhz signals on an ESP8266, using the Arduino IDE/PlatformIO in VScode [Recommended].
 
 ## Design goal
 
-My goal with this is to have a set of RF codes I can send over and over from an ESP8266. As I'm getting the board to do a lot, I'm also keen to keep memory usage low, and not make it hard to add new codes or modify existing ones. It is not designed to receive codes, except for the recording phase.
+My goal with this is to have a set of RF codes I can send over and over from an ESP8266/ESP32. As I'm getting the board to do a lot, I'm also keen to keep memory usage low, and not make it hard to add new codes or modify existing ones. It is not designed to receive codes, except for the recording phase.
 
 I'm using the Arduino IDE, with the excellent ESP8266 libraries from here: https://github.com/esp8266/Arduino/ 
 
@@ -26,10 +26,16 @@ Now you have a bunch of recorded codes, they can be uploaded to the ESP with you
 
 If you run RF_Record.ino, you can then flash RF_Send.ino, and it will re-transmit the same signal.
 
-Once uploaded, you can call `sendSignal`. The input to `sendSignal` is the name of the file saved above (without the extension). It will then replay the RF signal, and all going to plan, whatever it is should happen (open the garage, close the blind etc).
+Once uploaded, you can call `sendSignal`. The input to `sendSignal` is the name of the file saved above (without the extension). It will then replay the RF signal, and all going to plan, whatever it is should happen (open the garage, close the blind, etc).
 
 
-# More info
+## Adding digital assistant support (SinricPro)
 
-See the wiki for the hardware and setup that I used with this code.
+In order for it to work with Google Assistant or Alexa, we'll use SinricPro library by Boris Jaeger (https://github.com/sinricpro/esp8266-esp32-sdk). You'll need to sign up in https://sinric.pro/, and register a device from the list (I personally used GarageDoor example from https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/examples/GarageDoor/GarageDoor.ino) and it will give you: Device ID and your account credentials (app key and secret). You'll need to replace this information on the RF_Send.ino example file.
 
+
+## Thank you!
+
+Based on the project RFreplayESP was originally created by sillyfrog, with support from SinricPro framework and libraries.
+
+~AC
